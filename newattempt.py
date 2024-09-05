@@ -29,7 +29,7 @@ class Square(pygame.sprite.Sprite):
         self.x,self.y = x,y
         self.dx,self.dy = 0,0
 
-        self.rect = pygame.FRect(0,0,360,220) # this one is dummy
+        self.rect = pygame.FRect(0,0,180,110) # this one is dummy
         self.actrect = pygame.FRect((0,0),(21,21))
 
         self.rect.center = (self.x,self.y)
@@ -39,8 +39,7 @@ class Square(pygame.sprite.Sprite):
         self.image.fill((0,0,0))
         self.image.set_colorkey((0,0,0))
 #        pygame.gfxdraw.filled_polygon(self.image,[(180,0),(0,110),(180,220),(360,110)],(150,150,150))
-        pygame.gfxdraw.filled_ellipse(self.image,180,110,120,110,(255,255,255))
-        self.image.set_alpha(50)
+        pygame.gfxdraw.filled_ellipse(self.image,90,55,60,55,(255,255,255))
 
     def update(self,hdx=0,hdy=0):
 
@@ -48,16 +47,16 @@ class Square(pygame.sprite.Sprite):
 
         if self.dir == "right":
             dx += 1.5 * dt
-            dy += .9 * dt 
+            dy += .875 * dt 
         elif self.dir == "up":
             dx += 1.5 * dt
-            dy -= .9 * dt
+            dy -= .875 * dt
         elif self.dir == "left":
             dx -= 1.5 * dt
-            dy -= .9 * dt
+            dy -= .875 * dt
         elif self.dir == "down":
             dx -= 1.5 * dt
-            dy += .9 * dt
+            dy += .875 * dt
 
         self.x += dx
         self.y += dy
@@ -67,6 +66,7 @@ class Square(pygame.sprite.Sprite):
 pygame.init()
 fontt = pygame.font.Font(None,size=48)
 window = pygame.display.set_mode((1440,810))
+screen = pygame.Surface((1440,810))
 
 pygame.display.set_caption("The Snexplorer")
 clock = pygame.time.Clock()
@@ -87,7 +87,8 @@ while True:
     dt = 60 * (time2 - time1)
     time1 = time.time()
 
-    window.fill((123,69,30))
+    window.fill((0,0,0))
+    screen.fill((0,0,0))
 
     dx,dy=player.dx,player.dy
     for event in pygame.event.get():
@@ -115,9 +116,9 @@ while True:
             
     fps = dt**-1*60
     fps = "%.2f" % fps
-    window.blit(fontt.render(fps,True,(0,0,0)),(0,0))
+    screen.blit(fontt.render(fps,True,(200,200,200)),(0,0))
 
-    mapblit(60,36,720-player.x,405-player.y)
+    mapblit(60,35,720-player.x,405-player.y)
 
 #    for i in range(1,5):
 #        pygame.gfxdraw.pie(window,720,405,100,(i-1)*(90),i*(90),(255,255,255))
@@ -127,8 +128,10 @@ while True:
 
 #    window.blit(frost_wand,(player.x,player.y))
     snakebod.update()
-    snakebod.draw(window)
+    snakebod.draw(screen)
     pygame.gfxdraw.rectangle(window,player.actrect,(150,100,100))
     pygame.gfxdraw.rectangle(window,player.rect,(150,100,100))
+    screen.set_colorkey((255,255,255))
+#    window.blit(screen,(0,0))
     pygame.display.update()
     clock.tick(60)
