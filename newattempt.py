@@ -31,7 +31,7 @@ def mapblit(screen,valx,valy,dx=0,dy=0):
         for x, col in enumerate(row):
             screen.blit(block,(midx + (x-1)*valx - y*valx+ map_del.x, midy - (15 - y)*valy + x * valy + map_del.y))
 
-frost_wand = pygame.image.load("sprites/frost wand.png")
+frost_wand = pygame.image.load("data/sprites/frost wand.png")
 
 view_rect = pygame.FRect(0,0,660,370)
 view_rect.center = [midx,midy]
@@ -102,7 +102,7 @@ class Square(pygame.sprite.Sprite):
 
 pygame.init()
 
-sound = pygame.mixer.Sound("jump.wav")
+sound = pygame.mixer.Sound("data/sfx/jump.wav")
 #channel = pygame.mixer.find_channel()
 #channel = pygame.mixer.find_channel()#Getting a Free Channel
 #left,right = .1, .0
@@ -112,11 +112,12 @@ sound = pygame.mixer.Sound("jump.wav")
 fontt = pygame.font.Font(None,size=48)
 window = pygame.display.set_mode((1440,810))
 screen = pygame.Surface((1440,810))
+screen.set_alpha(150)
 
 pygame.display.set_caption("The Snexplorer")
 clock = pygame.time.Clock()
 
-block = pygame.transform.scale(pygame.image.load("newblock.png"),(120,104))
+block = pygame.transform.scale(pygame.image.load("data/sprites/newblock.png"),(120,104))
 #block = pygame.image.load("sprites/newblock.png")
 block = block.convert_alpha()
 
@@ -199,8 +200,8 @@ while True:
 
 #    pygame.gfxdraw.rectangle(window,player.actrect,(150,100,100))
     pygame.gfxdraw.rectangle(window,player.rect,(150,100,100))
-#    pygame.gfxdraw.rectangle(window,view_rect,(150,100,100))
-    pygame.gfxdraw.polygon(window,mask_outline,(255,255,255))
+#    pygame.gfxdraw.rectangle(screen,view_rect,(150,100,100))
+    pygame.gfxdraw.polygon(screen,mask_outline,(255,255,255))
 
     vision_blit(player.num_dir,player.dir_vecs)
     screen.set_colorkey((255,255,255))

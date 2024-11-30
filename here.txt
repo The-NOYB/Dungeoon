@@ -1,0 +1,9 @@
+- grouping and separation is as follows
+    (map -> loader, bliter, fade in fade out?)
+    (player -> )
+    (phsyics? -> )
+    (screen -> intial menu, pause screen )
+    (game -> )
+- pygame.Surface.subsurface for spritesheet
+- server
+
