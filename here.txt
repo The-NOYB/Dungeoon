@@ -1,9 +1,10 @@
 - grouping and separation is as follows
-    (map -> loader, bliter, fade in fade out?)
-    (player -> )
-    (phsyics? -> )
-    (screen -> intial menu, pause screen )
-    (game -> )
+    main -> will just execute
+    player -> just the player
+    map -> map generation, bliting
+    objects -> all items
+    server -> will host the server
+    game -> basically the client
+
 - pygame.Surface.subsurface for spritesheet
 - server
-

@@ -2,6 +2,7 @@ import pygame,sys,time
 import common
 from screen import Screen
 from player import Player
+from map import Map
 
 class Game():
     def __init__(self) -> None:
@@ -13,6 +14,7 @@ class Game():
         self.clock = pygame.time.Clock()
         self.screen = Screen()
         self.player = Player()
+        self.map = Map()
 
     # the loop running the game
     def game_loop(self) -> None:
@@ -25,6 +27,7 @@ class Game():
     def menu(self) -> None:
         self.events()
         self.screen.menu() # execute the menu screen
+        self.map.mapblit(self.screen)
                     
     def quit(self) -> None:
         pygame.quit()
@@ -40,7 +43,6 @@ class Game():
         common.time2 = time.time()
         common.dt = 60 * (common.time2 - common.time1)
         common.time1 = time.time()
-
 
     def selector(self) -> None: 
         if self.state == "menu":

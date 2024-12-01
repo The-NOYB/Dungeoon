@@ -49,8 +49,6 @@ class Square(pygame.sprite.Sprite):
         # for vision trigons
         self.dir_vecs = [( 1,-1 ),( -1,-1 ),( -1,1 ),( 1,1 )]
 
-
-
 #        self.rect = pygame.FRect(0,0,180,110) # this one is dummy
         self.rect = pygame.FRect((0,0),(21,21))
 
