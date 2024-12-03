@@ -1,11 +1,11 @@
 import pygame as pg
 import sys, time
+from .scene import Scene
 
 class Game():
     def __init__(self):
         pg.init()
 
-        self.state = "menu"
         self.running = True
         self.clock = pg.time.Clock()
 
@@ -16,14 +16,16 @@ class Game():
         self.dummy_screen = pg.Surface( self.screen_dimensions )
         self.window = pg.display.set_mode( self.screen_dimensions )
 
-    def menu(self):
-        pass
+        # other modules
+        self.scene = Scene(self.window)
 
     def run(self):
         while self.running:
             self.clock.tick(60)
+            self.window.fill( (123,63,134) )
             
             self.events() 
+            self.scene.selector()
 
             pg.display.update()
  
@@ -34,8 +36,3 @@ class Game():
                 pg.exit()
             if event.type == pg.KEYDOWN:
                 pass
-                    
-        
-    def selector(self):
-        if self.state == "menu":
-            self.menu() # this should be replaced by a screen class which just contains what to do at what?
