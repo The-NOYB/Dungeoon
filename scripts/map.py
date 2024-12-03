@@ -1,5 +1,4 @@
 import pygame,sys,time
-import common
 
 class Map():
 

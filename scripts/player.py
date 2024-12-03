@@ -1,9 +1,10 @@
 import pygame, sys, time
-from common import *
 
 class Player():
     def __init__(self):
-        super().__init__()
+        self.health = 100
+        self.vel = 32
+        self.inventory = []
 
     def B(self):
         pass

@@ -1,10 +1,12 @@
-- grouping and separation is as follows
+- Roadmap
     main -> will just execute
-    player -> just the player
-    map -> map generation, bliting
     objects -> all items
-    server -> will host the server
-    game -> basically the client
+    player -> just the player
+    scene -> handle what is going on the screen (may become state machine or something in the near future)
+    map -> map generation, bliting (use a dummy till the world gen)
+    program wise -> settings, configs etc
+    server&client -> server and client side
 
-- pygame.Surface.subsurface for spritesheet
-- server
+- Miniscule stuff
+    pygame.Surface.subsurface for spritesheet
+
