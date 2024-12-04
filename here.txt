@@ -1,8 +1,8 @@
 - Roadmap
     main -> will just execute
-    objects -> all items
-    player -> just the player
     scene -> handle what is going on the screen (may become state machine or something in the near future)
+    items -> all items
+    player -> just the player
     map -> map generation, bliting (use a dummy till the world gen)
     program wise -> settings, configs etc
     server&client -> server and client side
