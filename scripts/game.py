@@ -10,7 +10,7 @@ class Game():
         self.clock = pg.time.Clock()
 
         # screen and window related stuff
-        self.screen_width, self.screen_height = 1280,720
+        self.screen_width, self.screen_height = 1440,810
         self.font = pg.font.Font( '../../../Downloads/celtic_bit/celtic-bit.ttf', 48 )
         self.font1 = pg.font.Font( None, 48 )
         self.screen_dimensions = ( self.screen_width, self.screen_height )

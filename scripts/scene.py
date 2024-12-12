@@ -4,12 +4,14 @@ from .map import Map
 from .player import Player
 
 class Scene():
+
     def __init__(self, surface, surface_length, font):
         self.state = "menu"
         self.window = surface
         self.window_dimensions = surface_length
         self.font = font
         self.map = None
+        self.group = pg.sprite.Group()
 
     def menu(self):
         self.window.blit( self.font.render( "Dungeoon", True, (0,0,0) ), ( 200,200) )
@@ -19,6 +21,7 @@ class Scene():
         if key_input[ pg.K_RETURN ]:
             self.map = Map(self.window_dimensions)
             self.player = Player()
+            self.group.add( self.player )
             self.state = "gameplay"
 
     def game(self):
@@ -28,6 +31,7 @@ class Scene():
         # bliting map -> player
         self.map.blit_map( self.window )
         self.player.update( key_input )
+        self.group.draw( self.window )
         
     def pause(self):
         pass

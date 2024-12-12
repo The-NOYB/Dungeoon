@@ -1,13 +1,21 @@
 import pygame as pg
 import  sys, time
 
-class Player():
+class Player(pg.sprite.Sprite):
+
     def __init__(self):
-        self.health = 100
+        pg.sprite.Sprite.__init__(self)
+
+        # position and sprite stuff
+        self.x, self.y = [ 100, 100 ]
         self.vel = 32
+        self.image = pg.Surface( (50, 50) )
+        self.rect = self.image.get_rect()
+
+        # properties
+        self.health = 100
         self.inventory = []
         self.direction = None
-        self.x, self.y = [ 100, 100 ]
 
     def update(self, key_input):
         # key input here
@@ -24,17 +32,20 @@ class Player():
         
         # properties here
         if self.direction == "RIGHT":
-            self.x += 3
-            self.y -= 3
+            self.x += 2
+            self.y += 1.16
         elif self.direction == "LEFT":
-            self.x -= 3
-            self.y += 3
+            self.x -= 2
+            self.y -= 1.16
         elif self.direction == "DOWN":
-            self.x += 3
-            self.y += 3
+            self.x -= 2
+            self.y += 1.16
         elif self.direction == "UP":
-            self.x -= 3
-            self.y -= 3
+            self.x += 2
+            self.y -= 1.16
+
+        self.rect.x = self.x
+        self.rect.y = self.y
 
         print( f"{self.direction = }, {self.x = }, {self.y = }")
     
